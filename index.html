@@ -1,1 +1,61 @@
-<h1>Z4XGAMING LIVE</h1>
+printf "<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Z4X | GOLDEN BUNDLE ENGINE</title>
+    <style>
+        body { background: #000; color: #fff; font-family: sans-serif; text-align: center; padding: 10px; }
+        .nexus-card { background: #080808; border: 2px solid #ffd700; border-radius: 20px; padding: 20px; box-shadow: 0 0 30px rgba(255, 215, 0, 0.3); max-width: 500px; margin: auto; }
+        h1 { color: #ffd700; text-shadow: 0 0 15px #ffd700; font-size: 26px; letter-spacing: 2px; }
+        .big-bundle-preview { width: 100%; height: 250px; border-radius: 15px; border: 2px solid #ffd700; margin: 15px 0; object-fit: cover; background: #111; }
+        input { width: 85%; padding: 12px; margin: 8px 0; background: #111; border: 1px solid #333; color: #ffd700; border-radius: 8px; text-align: center; font-size: 16px; font-weight: bold; }
+        .btn-search { background: linear-gradient(45deg, #ffd700, #ff8c00); color: #000; border: none; padding: 15px; border-radius: 10px; cursor: pointer; font-weight: bold; width: 90%; margin: 15px 0; text-transform: uppercase; font-size: 16px; box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4); }
+        .results-list { height: 450px; overflow-y: auto; text-align: left; padding-right: 5px; }
+        .season-box { background: #111; border: 1px solid #222; padding: 15px; margin-bottom: 20px; border-radius: 15px; position: relative; overflow: hidden; }
+        .bundle-tag { color: #ffd700; font-weight: bold; font-size: 16px; display: block; margin-bottom: 10px; text-transform: uppercase; }
+        .generated-code { background: #000; color: #0f0; padding: 12px; font-size: 13px; border-radius: 8px; word-break: break-all; border: 1px solid #333; font-family: monospace; }
+        .copy-btn { background: #ffd700; color: #000; border: none; padding: 10px; margin-top: 10px; border-radius: 8px; cursor: pointer; font-size: 12px; width: 100%; font-weight: bold; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: #ffd700; border-radius: 10px; }
+    </style>
+</head>
+<body>
+<div class='nexus-card'>
+    <h1>Z4X GOLDEN ERA</h1>
+    <img src='https://i.ibb.co/vYm0f4Y/hiphop.png' class='big-bundle-preview' alt='Golden Hip Hop'>
+    <input type='text' id='nameInp' placeholder='ENTER NAME'>
+    <input type='number' id='lvlInp' placeholder='FAKE LEVEL (100-200)'>
+    <button class='btn-search' onclick='generateGolden()'>SEARCH BUNDLES</button>
+    <div class='results-list' id='results'></div>
+</div>
+<script>
+    function generateGolden() {
+        const name = document.getElementById('nameInp').value || 'COMMANDER';
+        const lvl = document.getElementById('lvlInp').value || '100';
+        const results = document.getElementById('results');
+        results.innerHTML = '';
+        const bundleData = [
+            { s: 'GOLDEN HIP HOP (S2)', c: '[FFFF00]', sym: '♛', img: 'https://i.ibb.co/vYm0f4Y/hiphop.png' },
+            { s: 'SAKURA VETERAN (S1)', c: '[FF0000]', sym: '〆', img: 'https://i.ibb.co/LzNf9m9/sakura.png' },
+            { s: 'NEW ERA BUNDLE', c: '[00FFFF]', sym: '⚡', img: 'https://i.ibb.co/K287L6N/s3.png' }
+        ];
+        bundleData.forEach((item, index) => {
+            const finalCode = '[000000]██████████████\\n' + item.c + '[b][c]' + item.sym + ' ' + name + ' ' + item.sym + '\\n' + item.c + '[b][c]LVL ' + lvl + ' ' + item.s + '\\n[000000]██████████████';
+            const div = document.createElement('div');
+            div.className = 'season-box';
+            div.innerHTML = '<span class=\"bundle-tag\">' + item.s + '</span>' +
+                            '<img src=\"' + item.img + '\" style=\"width:100%; border-radius:10px; margin-bottom:10px;\">' +
+                            '<div class=\"generated-code\" id=\"c' + index + '\">' + finalCode + '</div>' +
+                            '<button class=\"copy-btn\" onclick=\"copyText(\'c' + index + '\')\">COPY ' + item.s + ' SIGNATURE</button>';
+            results.appendChild(div);
+        });
+    }
+    function copyText(id) {
+        const text = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(text);
+        alert('Copied! Golden Signature Updated.');
+    }
+</script>
+</body>
+</html>" > index.html
